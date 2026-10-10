@@ -1,21 +1,110 @@
-# Kyrylo Kalashnyk
+<img src="assets/banner.svg" alt="Kyrylo Kalashnyk — AI Automation Engineer" width="100%">
 
-AI Automation Engineer. I build LLM agents and automations that people use every day, and take
-them from a vague request to a system running in production.
+I build LLM agents and automations that people use every day, and take them from a vague request to
+a system running in production. Most of my client work is private, so the repositories below are
+**rebuilt reference versions** of systems I built for clients, plus my own products. More are on the way. Each one has
+tests, CI and a README that says plainly what is verified and what is not.
 
-Most of my client work is private, so the repositories below are reference implementations of
-systems I built for clients, rebuilt on synthetic data. Each one has tests, CI and a README that
-says plainly what is verified and what is not.
+### In client work
 
-| Repository | What it shows |
-|---|---|
-| [sprint-analytics](https://github.com/kotiniiqq/sprint-analytics) | Jira sprint metrics computed by code and reported by an LLM, with a guard that rejects invented numbers. MCP server, evals, tracing. Python, 89 tests. |
-| [support-agent](https://github.com/kotiniiqq/support-agent) | A support agent that answers only from its knowledge base and hands sensitive tickets to a person. RAG (BM25 / Qdrant), PII pre-gate, golden-set and adversarial evals. Python, 130 tests. |
-| [n8n-workflow-kit](https://github.com/kotiniiqq/n8n-workflow-kit) | n8n workflows as TypeScript: tested Code-node modules, deterministic builds, deploy with drift detection and rollback, verified end to end on a live n8n 2.40. 70 tests. |
-| [bmf-messenger](https://github.com/kotiniiqq/bmf-messenger) | My own product: a desktop messenger with end-to-end encrypted chats (libsignal), calls and a mail client. TypeScript monorepo (Fastify, Electron, React, PostgreSQL), ~28k lines, 363 tests. |
+| | Result | How it is measured |
+|---|---|---|
+| 🎧 Support AI agent | **~30% → ~70%** of tickets handled without an agent | ticket share before and after, client helpdesk |
+| 📊 Jira sprint agents | used by **8 team leads** across **9 departments**, every sprint | in production |
+| 🎬 AI video pipeline | **$4–6** of API cost per 4–8-minute documentary, **18** n8n workflows | measured on test runs |
+| ⚙️ n8n at scale | **20+** workflows generated from code and deployed through the API | in production |
 
-**Stack:** Python, TypeScript, Go · n8n, LLM APIs, RAG, MCP · PostgreSQL, Redis, BigQuery ·
-Docker, Linux, GitHub Actions
+## Projects
 
-**Contact:** kotiniiqq@protonmail.com · Telegram [@kotiniiqq](https://t.me/kotiniiqq) ·
-Antalya, Turkey, remote · English B1
+<table>
+<tr>
+<td width="50%" valign="top">
+
+<img src="assets/support.svg" width="100%" alt="support-agent flow">
+
+### [support-agent](https://github.com/kotiniiqq/support-agent)
+A support agent that answers only from its knowledge base and hands everything else to a person.
+
+**Stack:** Python · RAG · BM25 / Qdrant · Chatwoot
+
+- personal data is caught before any model sees the ticket
+- billing, VIP and abuse go straight to a person; unsure → hand-off with a ready note
+- measured on a golden set and an adversarial set, in CI, without keys
+
+**Result:** 0 wrong answers on the golden set, 62/62 adversarial tickets handled.
+
+<sub>130 tests · client system: ~30% → ~70% of tickets</sub>
+
+</td>
+<td width="50%" valign="top">
+
+<img src="assets/sprint.svg" width="100%" alt="sprint-analytics flow">
+
+### [sprint-analytics](https://github.com/kotiniiqq/sprint-analytics)
+Jira sprint metrics computed by code and written up by an LLM, as a CLI and an **MCP server**.
+
+**Stack:** Python · MCP · Jira API · evals · Langfuse (optional)
+
+- story points, cycle time, time in status: computed, never guessed by the model
+- a guard rejects any number the model did not get from the code
+- evals measure the guard: precision 1.0, recall 0.79 on 22 cases
+
+**Saves:** team leads get the sprint report without collecting numbers by hand.
+
+<sub>89 tests · client system: 8 team leads, 9 departments</sub>
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+<img src="assets/kit.svg" width="100%" alt="n8n-workflow-kit flow">
+
+### [n8n-workflow-kit](https://github.com/kotiniiqq/n8n-workflow-kit)
+n8n workflows as TypeScript: tested Code-node logic, deterministic builds, a deploy that cannot break production.
+
+**Stack:** TypeScript · n8n Workflow SDK · esbuild · n8n API
+
+- deploy saves a draft, then publishes; a UI edit stops the deploy instead of being overwritten
+- rollback with a backup; dependency-ordered deploys
+- verified end to end on a real n8n 2.40
+
+**Saves:** no more hand-edited production workflows; one command deploys and checks all of them.
+
+<sub>70 unit tests · 8/8 e2e checks</sub>
+
+</td>
+<td width="50%" valign="top">
+
+<img src="assets/bmf.svg" width="100%" alt="bmf-messenger diagram">
+
+### [bmf-messenger](https://github.com/kotiniiqq/bmf-messenger)
+My own desktop messenger: end-to-end encrypted chats, voice and video calls, screen sharing, built-in mail.
+
+**Stack:** TypeScript · Electron · React · Fastify · PostgreSQL · libsignal · LiveKit
+
+- E2E encryption on the Signal protocol
+- its own mail service; installers built in CI with auto-update
+- beta with a small group of users
+
+
+<sub>~28k lines · 363 tests · built solo</sub>
+
+</td>
+</tr>
+</table>
+
+### Stack
+
+**AI:** LLM agents and tool use · RAG · MCP · evals and guardrails · OpenRouter, Claude and OpenAI APIs
+
+**Automation:** n8n (workflows as code) · Make · Zapier · Slack and Jira apps · Telegram bots
+
+**Engineering:** Python · TypeScript · Go · FastAPI · Fiber · React · PostgreSQL · BigQuery · Redis
+
+**Delivery:** Docker Compose · Linux VPS · Nginx / Caddy · GitHub Actions
+
+### Contact
+
+✉️ kotiniiqq@protonmail.com · 💬 [Telegram @kotiniiqq](https://t.me/kotiniiqq)<br>
+📍 Antalya, Turkey · remote · English B1
