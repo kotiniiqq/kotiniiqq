@@ -2,7 +2,7 @@
 
 I build LLM agents and automations that people use every day, and take them from a vague request to
 a system running in production. Most of my client work is private, so the repositories below are
-**rebuilt reference versions** of systems I built for clients, plus my own products. More are on the way. Each one has
+**rebuilt reference versions** of systems I built for clients, plus my own products. Each one has
 tests, CI and a README that says plainly what is verified and what is not.
 
 ### In client work
@@ -17,6 +17,44 @@ tests, CI and a README that says plainly what is verified and what is not.
 ## Projects
 
 <table>
+<tr>
+<td width="50%" valign="top">
+
+<img src="assets/video.svg" width="100%" alt="ai-video-pipeline flow">
+
+### [ai-video-pipeline](https://github.com/kotiniiqq/ai-video-pipeline)
+Topic in, finished documentary out: script with sources, voice-over, shots, mastered mp4 with subtitles and a thumbnail.
+
+**Stack:** n8n · TypeScript · Python · FastAPI · FFmpeg · OpenCV · Postgres · Docker
+
+- every shot is checked (black, frozen, wrong length, face drift); 3 tries, then a safe fallback
+- picture and narration stay in sync; −14 LUFS like broadcast
+- runs end to end **without API keys** in demo mode
+
+**Saves:** a documentary like this takes **15–20 h** by hand *(est.: script 4 h, voice 1 h, footage 4–6 h, editing 6–8 h)*; here it is **~1 h of review**.
+
+<sub>75 + 92 tests · e2e on a real n8n: topic → video in ~3 min</sub>
+
+</td>
+<td width="50%" valign="top">
+
+<img src="assets/analyst.svg" width="100%" alt="ai-data-analyst flow">
+
+### [ai-data-analyst](https://github.com/kotiniiqq/ai-data-analyst)
+Ask a data warehouse in plain English; get a table, a chart and the trace of how the answer was found.
+
+**Stack:** Go · Fiber · React · TypeScript · Postgres · BigQuery · OpenRouter
+
+- the model acts only through tools the user's role allows; every call is audited
+- every SQL query goes through a validator; expensive ones need a click to approve, with the price
+- answers with numbers no tool returned are rejected
+
+**Saves:** a manager gets an answer in seconds instead of waiting for an analyst.
+
+<sub>97 Go + 12 web tests · 10/10 e2e · reference version of the AI analyst I built on the client's BigQuery platform</sub>
+
+</td>
+</tr>
 <tr>
 <td width="50%" valign="top">
 
@@ -58,6 +96,24 @@ Jira sprint metrics computed by code and written up by an LLM, as a CLI and an *
 <tr>
 <td width="50%" valign="top">
 
+<img src="assets/orchestrator.svg" width="100%" alt="agent-orchestrator flow">
+
+### [agent-orchestrator](https://github.com/kotiniiqq/agent-orchestrator)
+Several role-based agents, each on its own model, argue in rounds until they all accept one answer.
+
+**Stack:** Python · OpenRouter · aiogram (Telegram)
+
+- architect, critic and pragmatist answer on their own, then review one draft in rounds
+- the moderator accepts or rejects every objection; open ones are reported as dissent
+- one decision with reasons in Telegram; the full debate as a file
+
+**Saves:** a second and third opinion on design decisions in minutes.
+
+<sub>77 tests · my own tool; the original code was lost, rebuilt for publication</sub>
+
+</td>
+<td width="50%" valign="top">
+
 <img src="assets/kit.svg" width="100%" alt="n8n-workflow-kit flow">
 
 ### [n8n-workflow-kit](https://github.com/kotiniiqq/n8n-workflow-kit)
@@ -74,6 +130,8 @@ n8n workflows as TypeScript: tested Code-node logic, deterministic builds, a dep
 <sub>70 unit tests · 8/8 e2e checks</sub>
 
 </td>
+</tr>
+<tr>
 <td width="50%" valign="top">
 
 <img src="assets/bmf.svg" width="100%" alt="bmf-messenger diagram">
@@ -91,8 +149,7 @@ My own desktop messenger: end-to-end encrypted chats, voice and video calls, scr
 <sub>~28k lines · 363 tests · built solo</sub>
 
 </td>
-</tr>
-</table>
+<td width="50%" valign="top">
 
 ### Stack
 
@@ -108,3 +165,7 @@ My own desktop messenger: end-to-end encrypted chats, voice and video calls, scr
 
 ✉️ kotiniiqq@protonmail.com · 💬 [Telegram @kotiniiqq](https://t.me/kotiniiqq)<br>
 📍 Antalya, Turkey · remote · English B1
+
+</td>
+</tr>
+</table>
