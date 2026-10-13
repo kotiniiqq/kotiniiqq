@@ -134,6 +134,24 @@ n8n workflows as TypeScript: tested Code-node logic, deterministic builds, a dep
 <tr>
 <td width="50%" valign="top">
 
+<img src="assets/prozorro.svg" width="100%" alt="prozorro-mcp flow">
+
+### [prozorro-mcp](https://github.com/kotiniiqq/prozorro-mcp)
+Ukraine's public procurement (Prozorro) for an AI assistant or the terminal: open tenders, upcoming plans, market, competitors, red flags.
+
+**Stack:** Python · MCP · SQLite · Prozorro API
+
+- syncs only your oblasts from the public API, newest tenders first, resumes after a break, no keys
+- unit prices, win rates, single-bidder share: computed by code, never by the model
+- red flags with evidence; evals: precision and recall 1.0 on 35 cases, totals reconciled with raw data
+
+**Saves:** a bidder gets new tenders and next month's planned purchases every morning instead of browsing prozorro.gov.ua by hand.
+
+<sub>228 tests · on PyPI and in the official MCP Registry · one-click desktop extension · CSV for Excel without AI · my own open-source tool</sub>
+
+</td>
+<td width="50%" valign="top">
+
 <img src="assets/bmf.svg" width="100%" alt="bmf-messenger diagram">
 
 ### [bmf-messenger](https://github.com/kotiniiqq/bmf-messenger)
@@ -149,6 +167,8 @@ My own desktop messenger: end-to-end encrypted chats, voice and video calls, scr
 <sub>~28k lines · 363 tests · built solo</sub>
 
 </td>
+</tr>
+<tr>
 <td width="50%" valign="top">
 
 ### Stack
@@ -157,9 +177,12 @@ My own desktop messenger: end-to-end encrypted chats, voice and video calls, scr
 
 **Automation:** n8n (workflows as code) · Make · Zapier · Slack and Jira apps · Telegram bots
 
-**Engineering:** Python · TypeScript · Go · FastAPI · Fiber · React · PostgreSQL · BigQuery · Redis
+**Engineering:** Python · TypeScript · Go · FastAPI · Fiber · React · PostgreSQL · SQLite · BigQuery · Redis
 
 **Delivery:** Docker Compose · Linux VPS · Nginx / Caddy · GitHub Actions
+
+</td>
+<td width="50%" valign="top">
 
 ### Contact
 
