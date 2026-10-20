@@ -186,7 +186,7 @@ My own desktop messenger: end-to-end encrypted chats, voice and video calls, scr
 
 ### Contact
 
-✉️ kotiniiqq@protonmail.com · 💬 [Telegram @kotiniiqq](https://t.me/kotiniiqq)<br>
+✉️ [kotiniiqq@gmail.com](mailto:kotiniiqq@gmail.com) · 💬 [Telegram @kotiniiqq](https://t.me/kotiniiqq)<br>
 📍 Antalya, Turkey · remote · English B1
 
 </td>
