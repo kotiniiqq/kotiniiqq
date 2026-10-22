@@ -2,7 +2,7 @@
 
 I build LLM agents and automations that people use every day, and take them from a vague request to
 a system running in production. Most of my client work is private, so the repositories below are
-**rebuilt reference versions** of systems I built for clients, plus my own products. Each one has
+**rebuilt reference versions** of systems I built for clients, plus my own open-source tools and products. Each one has
 tests, CI and a README that says plainly what is verified and what is not.
 
 ### In client work
@@ -17,6 +17,44 @@ tests, CI and a README that says plainly what is verified and what is not.
 ## Projects
 
 <table>
+<tr>
+<td width="50%" valign="top">
+
+<img src="assets/migrate.svg" width="100%" alt="migrate-to-n8n flow">
+
+### [migrate-to-n8n](https://github.com/kotiniiqq/migrate-to-n8n)
+Move Make scenarios and Zapier zaps to n8n: an importable workflow plus a report on every step.
+
+**Stack:** TypeScript · Node.js · MCP · n8n
+
+- every step ends up converted, to review (one named thing to check) or manual (left in place, disabled, with a note on how to finish it)
+- routers, filters, iterators, formulas and error handlers carry over; nothing is dropped
+- works from Claude, Cursor, VS Code or the terminal; scenarios never leave your computer
+
+**Result:** 1,432 public Make scenarios and 148 zaps converted with 0 broken outputs; 80% of Make steps convert automatically or with one named check.
+
+<sub>317 tests · imports and live webhook runs checked on real n8n 2.x and 1.x · my own open-source tool</sub>
+
+</td>
+<td width="50%" valign="top">
+
+<img src="assets/prozorro.svg" width="100%" alt="prozorro-mcp flow">
+
+### [prozorro-mcp](https://github.com/kotiniiqq/prozorro-mcp)
+Ukraine's public procurement (Prozorro) for an AI assistant or the terminal: open tenders, upcoming plans, market, competitors, red flags.
+
+**Stack:** Python · MCP · SQLite · Prozorro API
+
+- syncs only your oblasts from the public API, newest tenders first, resumes after a break, no keys
+- unit prices, win rates, single-bidder share: computed by code, never by the model
+- red flags with evidence; evals: precision and recall 1.0 on 35 cases, totals reconciled with raw data
+
+**Saves:** a bidder gets new tenders and next month's planned purchases every morning instead of browsing prozorro.gov.ua by hand.
+
+<sub>228 tests · on PyPI and in the official MCP Registry · one-click desktop extension · CSV for Excel without AI · my own open-source tool</sub>
+
+</td>
+</tr>
 <tr>
 <td width="50%" valign="top">
 
@@ -89,29 +127,11 @@ Jira sprint metrics computed by code and written up by an LLM, as a CLI and an *
 
 **Saves:** team leads get the sprint report without collecting numbers by hand.
 
-<sub>89 tests · client system: 8 team leads, 9 departments</sub>
+<sub>90 tests · client system: 8 team leads, 9 departments</sub>
 
 </td>
 </tr>
 <tr>
-<td width="50%" valign="top">
-
-<img src="assets/orchestrator.svg" width="100%" alt="agent-orchestrator flow">
-
-### [agent-orchestrator](https://github.com/kotiniiqq/agent-orchestrator)
-Several role-based agents, each on its own model, argue in rounds until they all accept one answer.
-
-**Stack:** Python · OpenRouter · aiogram (Telegram)
-
-- architect, critic and pragmatist answer on their own, then review one draft in rounds
-- the moderator accepts or rejects every objection; open ones are reported as dissent
-- one decision with reasons in Telegram; the full debate as a file
-
-**Saves:** a second and third opinion on design decisions in minutes.
-
-<sub>77 tests · my own tool; the original code was lost, rebuilt for publication</sub>
-
-</td>
 <td width="50%" valign="top">
 
 <img src="assets/kit.svg" width="100%" alt="n8n-workflow-kit flow">
@@ -130,26 +150,26 @@ n8n workflows as TypeScript: tested Code-node logic, deterministic builds, a dep
 <sub>70 unit tests · 8/8 e2e checks</sub>
 
 </td>
-</tr>
-<tr>
 <td width="50%" valign="top">
 
-<img src="assets/prozorro.svg" width="100%" alt="prozorro-mcp flow">
+<img src="assets/orchestrator.svg" width="100%" alt="agent-orchestrator flow">
 
-### [prozorro-mcp](https://github.com/kotiniiqq/prozorro-mcp)
-Ukraine's public procurement (Prozorro) for an AI assistant or the terminal: open tenders, upcoming plans, market, competitors, red flags.
+### [agent-orchestrator](https://github.com/kotiniiqq/agent-orchestrator)
+Several role-based agents, each on its own model, argue in rounds until they all accept one answer.
 
-**Stack:** Python · MCP · SQLite · Prozorro API
+**Stack:** Python · OpenRouter · aiogram (Telegram)
 
-- syncs only your oblasts from the public API, newest tenders first, resumes after a break, no keys
-- unit prices, win rates, single-bidder share: computed by code, never by the model
-- red flags with evidence; evals: precision and recall 1.0 on 35 cases, totals reconciled with raw data
+- architect, critic and pragmatist answer on their own, then review one draft in rounds
+- the moderator accepts or rejects every objection; open ones are reported as dissent
+- one decision with reasons in Telegram; the full debate as a file
 
-**Saves:** a bidder gets new tenders and next month's planned purchases every morning instead of browsing prozorro.gov.ua by hand.
+**Saves:** a second and third opinion on design decisions in minutes.
 
-<sub>228 tests · on PyPI and in the official MCP Registry · one-click desktop extension · CSV for Excel without AI · my own open-source tool</sub>
+<sub>77 tests · my own tool; the original code was lost, rebuilt for publication</sub>
 
 </td>
+</tr>
+<tr>
 <td width="50%" valign="top">
 
 <img src="assets/bmf.svg" width="100%" alt="bmf-messenger diagram">
@@ -167,22 +187,22 @@ My own desktop messenger: end-to-end encrypted chats, voice and video calls, scr
 <sub>~28k lines · 363 tests · built solo</sub>
 
 </td>
-</tr>
-<tr>
 <td width="50%" valign="top">
 
 ### Stack
 
 **AI:** LLM agents and tool use · RAG · MCP · evals and guardrails · OpenRouter, Claude and OpenAI APIs
 
-**Automation:** n8n (workflows as code) · Make · Zapier · Slack and Jira apps · Telegram bots
+**Automation:** n8n (workflows as code) · Make · Zapier · migrations to n8n · Slack and Jira apps · Telegram bots
 
 **Engineering:** Python · TypeScript · Go · FastAPI · Fiber · React · PostgreSQL · SQLite · BigQuery · Redis
 
 **Delivery:** Docker Compose · Linux VPS · Nginx / Caddy · GitHub Actions
 
 </td>
-<td width="50%" valign="top">
+</tr>
+<tr>
+<td colspan="2" valign="top">
 
 ### Contact
 
