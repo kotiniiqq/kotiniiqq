@@ -31,9 +31,9 @@ Move Make scenarios and Zapier zaps to n8n: an importable workflow plus a report
 - routers, filters, iterators, formulas and error handlers carry over; nothing is dropped
 - works from Claude, Cursor, VS Code or the terminal; scenarios never leave your computer
 
-**Result:** 1,432 public Make scenarios and 148 zaps converted with 0 broken outputs; 80% of Make steps convert automatically or with one named check.
+**Result:** 1,432 public Make scenarios and 148 zaps converted with 0 broken outputs; 83% of Make steps convert automatically or with one named check.
 
-<sub>317 tests · imports and live webhook runs checked on real n8n 2.x and 1.x · my own open-source tool</sub>
+<sub>329 tests · imports and live webhook runs checked on real n8n 2.x and 1.x · my own open-source tool</sub>
 
 </td>
 <td width="50%" valign="top">
